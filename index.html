@@ -5,18 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stef's Bakery • Artisanal Sandwiches & Coffee in Amsterdam</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
 
     :root {
-      --bg-dark: #1b201a;
-      --bg-cream: #f4f0ea;
-      --card-cream: #e9e3d8;
-      --accent: #d46a4d;
-      --text-dark: #1b201a;
-      --text-light: #f4f0ea;
-      --muted: #626860;
-      --border-dark: rgba(27, 32, 26, 0.15);
-      --border-light: rgba(244, 240, 234, 0.15);
+      --bg: #f9f6f0;
+      --card-bg: #ffffff;
+      --dark: #121212;
+      --accent: #8b3a2b;
+      --accent-hover: #6d2c20;
+      --muted: #666666;
+      --border: #e4dcd0;
+      --sand: #ede4d3;
     }
 
     * {
@@ -30,404 +29,417 @@
     }
 
     body {
-      background-color: var(--bg-cream);
-      color: var(--text-dark);
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--dark);
+      font-family: 'Inter', sans-serif;
       line-height: 1.6;
     }
 
-    /* NAVIGATION BAR */
+    /* HEADER */
     header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      background: rgba(244, 240, 234, 0.9);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border-dark);
+      background: rgba(249, 246, 240, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
       z-index: 1000;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 40px;
+      padding: 24px 60px;
     }
 
-    .nav-brand {
-      font-family: 'Fraunces', serif;
-      font-size: 1.6rem;
+    .brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
       font-weight: 600;
-      color: var(--text-dark);
+      color: var(--accent);
       text-decoration: none;
-      letter-spacing: -0.5px;
     }
 
-    .nav-links {
+    .nav-menu {
       display: flex;
-      gap: 30px;
+      gap: 40px;
       list-style: none;
       align-items: center;
     }
 
-    .nav-links a {
+    .nav-menu a {
       text-decoration: none;
-      color: var(--text-dark);
+      color: var(--dark);
       font-weight: 500;
       font-size: 0.95rem;
       transition: color 0.2s;
     }
 
-    .nav-links a:hover {
+    .nav-menu a:hover {
       color: var(--accent);
     }
 
-    .nav-cta {
-      background: var(--accent);
-      color: var(--text-light) !important;
-      padding: 10px 20px;
-      border-radius: 50px;
-      font-weight: 600;
+    .btn-header {
+      background: var(--dark);
+      color: #fff;
+      padding: 10px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: background 0.2s;
     }
 
-    /* HERO SECTION */
-    .hero {
+    .btn-header:hover {
+      background: var(--accent);
+    }
+
+    /* HERO ASYMMETRIC STAGGERED */
+    .hero-new {
       min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      align-items: center;
-      padding: 140px 40px 80px 40px;
       max-width: 1400px;
       margin: 0 auto;
-      gap: 60px;
+      padding: 160px 60px 80px 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
     }
 
-    .hero-content h1 {
-      font-family: 'Fraunces', serif;
+    .hero-new h1 {
+      font-family: 'Playfair Display', serif;
       font-size: 4.8rem;
       line-height: 1.05;
       margin-bottom: 24px;
       font-weight: 400;
     }
 
-    .hero-content h1 em {
+    .hero-new h1 span {
       font-style: italic;
       color: var(--accent);
     }
 
-    .hero-content p {
+    .hero-new p {
       font-size: 1.15rem;
       color: var(--muted);
       margin-bottom: 40px;
-      max-width: 500px;
     }
 
-    .hero-btns {
+    .hero-actions {
       display: flex;
       gap: 16px;
     }
 
-    .btn-main {
-      background: var(--text-dark);
-      color: var(--text-light);
-      padding: 16px 32px;
-      border-radius: 50px;
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      padding: 16px 36px;
+      border-radius: 30px;
       text-decoration: none;
       font-weight: 600;
       transition: background 0.2s;
     }
 
-    .btn-main:hover {
-      background: var(--accent);
+    .btn-primary:hover {
+      background: var(--accent-hover);
     }
 
-    .btn-sec {
+    .btn-outline {
       background: transparent;
-      color: var(--text-dark);
-      border: 2px solid var(--border-dark);
-      padding: 16px 32px;
-      border-radius: 50px;
+      color: var(--dark);
+      border: 1.5px solid var(--border);
+      padding: 16px 36px;
+      border-radius: 30px;
       text-decoration: none;
       font-weight: 600;
-      transition: all 0.2s;
+      transition: border-color 0.2s;
     }
 
-    .btn-sec:hover {
-      border-color: var(--text-dark);
+    .btn-outline:hover {
+      border-color: var(--dark);
     }
 
-    .hero-gallery {
+    .hero-image-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 24px;
       height: 520px;
     }
 
-    .hero-gallery img {
+    .hero-image-grid img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 20px;
+      border-radius: 24px;
     }
 
-    .hero-gallery img:nth-child(2) {
+    .hero-image-grid img:first-child {
       margin-top: 40px;
     }
 
-    /* FEATURED MENU */
+    /* MENU SECTION - SIDE SCROLL / MODERN GRID */
     .menu-section {
-      background: var(--bg-dark);
-      color: var(--text-light);
-      padding: 120px 40px;
-      border-radius: 40px 40px 0 0;
+      background: var(--sand);
+      padding: 120px 60px;
+      border-radius: 40px;
+      max-width: 1400px;
+      margin: 0 auto;
     }
 
-    .section-header {
-      max-width: 1400px;
-      margin: 0 auto 60px auto;
+    .section-title-wrap {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
+      margin-bottom: 60px;
     }
 
-    .section-header h2 {
-      font-family: 'Fraunces', serif;
-      font-size: 3.5rem;
+    .section-title-wrap h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
       font-weight: 400;
     }
 
-    .section-header p {
-      color: #aaa;
-      font-size: 1.05rem;
-      max-width: 400px;
+    .section-title-wrap p {
+      color: var(--muted);
+      max-width: 380px;
     }
 
-    .menu-grid {
-      max-width: 1400px;
-      margin: 0 auto;
+    .menu-cards-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 30px;
     }
 
-    .menu-card {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border-light);
+    .card-item {
+      background: var(--card-bg);
       border-radius: 24px;
       overflow: hidden;
-      transition: transform 0.3s;
+      border: 1px solid var(--border);
+      transition: transform 0.3s ease;
     }
 
-    .menu-card:hover {
+    .card-item:hover {
       transform: translateY(-8px);
     }
 
-    .menu-card-img {
-      height: 280px;
+    .card-img-box {
+      height: 260px;
       width: 100%;
-      object-fit: cover;
     }
 
-    .menu-card-body {
-      padding: 30px;
-    }
-
-    .menu-card-title-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 12px;
-    }
-
-    .menu-card-title-row h3 {
-      font-family: 'Fraunces', serif;
-      font-size: 1.5rem;
-      font-weight: 500;
-    }
-
-    .price {
-      color: var(--accent);
-      font-weight: 700;
-      font-size: 1.2rem;
-    }
-
-    .menu-card-body p {
-      color: #aaa;
-      font-size: 0.95rem;
-    }
-
-    /* STORY / ABOUT SECTION */
-    .story-section {
-      padding: 140px 40px;
-      max-width: 1400px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    .story-img {
-      height: 600px;
-      border-radius: 30px;
-      overflow: hidden;
-    }
-
-    .story-img img {
+    .card-img-box img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    .story-text h2 {
-      font-family: 'Fraunces', serif;
+    .card-details {
+      padding: 28px;
+    }
+
+    .card-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .card-title-row h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    .card-price {
+      font-weight: 600;
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
+
+    .card-details p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* STORY SPLIT SECTION */
+    .story-section {
+      max-width: 1400px;
+      margin: 140px auto;
+      padding: 0 60px;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .story-img-wrap {
+      height: 550px;
+      border-radius: 30px;
+      overflow: hidden;
+    }
+
+    .story-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .story-content h2 {
+      font-family: 'Playfair Display', serif;
       font-size: 3.5rem;
       font-weight: 400;
       margin-bottom: 30px;
       line-height: 1.1;
     }
 
-    .story-text p {
-      font-size: 1.15rem;
+    .story-content p {
+      font-size: 1.1rem;
       color: var(--muted);
       margin-bottom: 24px;
-      line-height: 1.7;
+      line-height: 1.8;
     }
 
-    /* LOCATION & CONTACT */
-    .contact-section {
-      background: var(--card-cream);
-      padding: 120px 40px;
-      border-top: 1px solid var(--border-dark);
-    }
-
-    .contact-container {
+    /* UNIQUE CONTACT & MAP SECTION */
+    .contact-section-unique {
+      background: var(--dark);
+      color: #fff;
+      padding: 120px 60px;
+      border-radius: 40px;
       max-width: 1400px;
-      margin: 0 auto;
+      margin: 0 auto 60px auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 60px;
-      align-items: center;
     }
 
-    .contact-info h2 {
-      font-family: 'Fraunces', serif;
+    .contact-left h2 {
+      font-family: 'Playfair Display', serif;
       font-size: 3.5rem;
-      margin-bottom: 30px;
       font-weight: 400;
+      margin-bottom: 40px;
     }
 
-    .info-block {
+    .contact-detail-row {
       margin-bottom: 30px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
-    .info-block h4 {
-      font-size: 0.85rem;
+    .contact-detail-row label {
+      display: block;
+      font-size: 0.8rem;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--muted);
-      margin-bottom: 6px;
+      letter-spacing: 2px;
+      color: #888;
+      margin-bottom: 8px;
     }
 
-    .info-block p {
-      font-size: 1.2rem;
-      font-weight: 600;
+    .contact-detail-row p {
+      font-size: 1.25rem;
+      font-weight: 500;
     }
 
-    .map-box {
-      height: 450px;
+    .contact-map-wrap {
       border-radius: 24px;
       overflow: hidden;
-      border: 1px solid var(--border-dark);
+      min-height: 450px;
     }
 
-    .map-box iframe {
+    .contact-map-wrap iframe {
       width: 100%;
       height: 100%;
       border: none;
     }
 
     footer {
-      background: var(--bg-dark);
-      color: #888;
       text-align: center;
       padding: 40px;
+      color: var(--muted);
       font-size: 0.9rem;
-      border-top: 1px solid var(--border-light);
+      border-top: 1px solid var(--border);
+      max-width: 1400px;
+      margin: 0 auto;
     }
 
     @media (max-width: 900px) {
-      .hero, .menu-grid, .story-section, .contact-container, .section-header {
+      .hero-new, .menu-cards-grid, .story-section, .contact-section-unique, .section-title-wrap {
         grid-template-columns: 1fr;
       }
-      .hero-content h1 { font-size: 3.5rem; }
-      .hero { padding-top: 120px; }
-      .nav-links { display: none; }
+      .hero-new h1 { font-size: 3.5rem; }
+      header { padding: 20px; }
+      .nav-menu { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAVIGATION -->
+  <!-- HEADER -->
   <header>
-    <a href="#" class="nav-brand">Stef's Bakery.</a>
-    <ul class="nav-links">
-      <li><a href="#menu">Menu</a></li>
+    <a href="#" class="brand">Stef's Bakery</a>
+    <ul class="nav-menu">
+      <li><a href="#menu">Our Menu</a></li>
       <li><a href="#story">Our Story</a></li>
-      <li><a href="#catering">Catering</a></li>
-      <li><a href="#contact" class="nav-cta">Find Us</a></li>
+      <li><a href="#contact">Find Us</a></li>
     </ul>
+    <a href="#contact" class="btn-header">Book / Contact</a>
   </header>
 
   <!-- HERO SECTION -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Artisanal flavor, <em>Amsterdam</em> soul.</h1>
-      <p>Located on the charming Nieuwe Spiegelstraat. We handcraft gourmet sandwiches, fresh daily pastries, and our signature Bouks Blend specialty coffee.</p>
-      <div class="hero-btns">
-        <a href="#menu" class="btn-main">Explore Menu</a>
-        <a href="#contact" class="btn-sec">Visit Shop</a>
+  <section class="hero-new">
+    <div>
+      <h1>Handmade daily, baked with <span>passion</span> in Amsterdam.</h1>
+      <p>Nestled in the historic Nieuwe Spiegelstraat. Discover our freshly baked sourdough breads, gourmet fillings, and velvety coffee blends.</p>
+      <div class="hero-actions">
+        <a href="#menu" class="btn-primary">View Menu</a>
+        <a href="#contact" class="btn-outline">Visit Shop</a>
       </div>
     </div>
-    <div class="hero-gallery">
-      <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80" alt="Gourmet Sandwich">
-      <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80" alt="Pastry">
+    <div class="hero-image-grid">
+      <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" alt="Artisanal Bread">
+      <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=600&q=80" alt="Bakery Cafe Interior">
     </div>
   </section>
 
   <!-- MENU SECTION -->
   <section id="menu" class="menu-section">
-    <div class="section-header">
-      <h2>Daily Offerings</h2>
-      <p>Prepared fresh every morning with premium ingredients, sourced with care for our local community.</p>
+    <div class="section-title-wrap">
+      <h2>Fresh From The Oven</h2>
+      <p>Every item is crafted from scratch using premium ingredients, organic flours, and timeless techniques.</p>
     </div>
-    <div class="menu-grid">
-      <div class="menu-card">
-        <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80" class="menu-card-img" alt="BBQ Chicken">
-        <div class="menu-card-body">
-          <div class="menu-card-title-row">
-            <h3>BBQ Chicken Sandwich</h3>
-            <span class="price">€12.50</span>
+    <div class="menu-cards-grid">
+      <div class="card-item">
+        <div class="card-img-box">
+          <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80" alt="Artisanal Sandwich">
+        </div>
+        <div class="card-details">
+          <div class="card-title-row">
+            <h3>Rustic Prosciutto Panino</h3>
+            <span class="card-price">€13.50</span>
           </div>
-          <p>Tender chicken, smoky BBQ glaze, crisp greens, and toasted artisan bread.</p>
+          <p>Aged prosciutto di Parma, fresh figs, arugula, and drizzled honey.</p>
         </div>
       </div>
-      <div class="menu-card">
-        <img src="https://images.unsplash.com/photo-1539252554453-80ab65ce3586?auto=format&fit=crop&w=600&q=80" class="menu-card-img" alt="Capri">
-        <div class="menu-card-body">
-          <div class="menu-card-title-row">
-            <h3>Capri Sandwich</h3>
-            <span class="price">€13.00</span>
+      <div class="card-item">
+        <div class="card-img-box">
+          <img src="https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?auto=format&fit=crop&w=600&q=80" alt="Avocado Toast">
+        </div>
+        <div class="card-details">
+          <div class="card-title-row">
+            <h3>Avocado Sourdough Toast</h3>
+            <span class="card-price">€11.00</span>
           </div>
-          <p>Fresh mozzarella di bufala, ripe vine tomatoes, and house-made basil pesto.</p>
+          <p>Mashed avocado, poached organic eggs, chili flakes, and micro-greens.</p>
         </div>
       </div>
-      <div class="menu-card">
-        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80" class="menu-card-img" alt="Pastry">
-        <div class="menu-card-body">
-          <div class="menu-card-title-row">
-            <h3>Double Raspberry Croissant</h3>
-            <span class="price">€3.50</span>
+      <div class="card-item">
+        <div class="card-img-box">
+          <img src="https://images.unsplash.com/photo-1621236378699-8597feb4c164?auto=format&fit=crop&w=600&q=80" alt="Almond Croissant">
+        </div>
+        <div class="card-details">
+          <div class="card-title-row">
+            <h3>Double Baked Almond Croissant</h3>
+            <span class="card-price">€4.20</span>
           </div>
-          <p>Flaky, multi-layered butter pastry filled with rich organic raspberry jam.</p>
+          <p>Filled with rich almond frangipane and topped with toasted sliced almonds.</p>
         </div>
       </div>
     </div>
@@ -435,40 +447,38 @@
 
   <!-- STORY SECTION -->
   <section id="story" class="story-section">
-    <div class="story-img">
-      <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80" alt="Bakery interior">
+    <div class="story-img-wrap">
+      <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=800&q=80" alt="Baker working">
     </div>
-    <div class="story-text">
-      <h2>Rooted in quality and genuine hospitality.</h2>
-      <p>Stef's Bakery was born out of a deep passion for honest baking, exceptional specialty coffee, and creating a warm gathering space right in the heart of Amsterdam.</p>
-      <p>Whether you're stopping by for a quick morning espresso before work, picking up a gourmet lunch box, or ordering corporate catering for your team, we're dedicated to bringing flavor and joy to your day.</p>
+    <div class="story-content">
+      <h2>Crafting memories around real, honest food.</h2>
+      <p>Stef's Bakery started as a small dream to bring authentic artisanal baking traditions to the vibrant streets of Amsterdam.</p>
+      <p>Located on the picturesque Nieuwe Spiegelstraat, we open our doors every morning at 09:00 to welcome locals, artists, and travelers looking for a genuinely comforting space and exceptional coffee.</p>
     </div>
   </section>
 
-  <!-- CONTACT & LOCATION -->
-  <section id="contact" class="contact-section">
-    <div class="contact-container">
-      <div class="contact-info">
-        <h2>Come Visit Us</h2>
-        <div class="info-block">
-          <h4>Location</h4>
-          <p>Nieuwe Spiegelstraat 62B<br>1017 DH Amsterdam</p>
-        </div>
-        <div class="info-block">
-          <h4>Opening Hours</h4>
-          <p>Monday – Sunday: 09:00 – 17:30</p>
-        </div>
-        <div class="info-block">
-          <h4>Direct Contact</h4>
-          <p>info@stefsbakery.nl</p>
-        </div>
+  <!-- UNIQUE CONTACT SECTION -->
+  <section id="contact" class="contact-section-unique">
+    <div class="contact-left">
+      <h2>Stop By & Say Hello</h2>
+      <div class="contact-detail-row">
+        <label>Address</label>
+        <p>Nieuwe Spiegelstraat 62B, 1017 DH Amsterdam</p>
       </div>
-      <div class="map-box">
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2436.578!2d4.8943!3d52.3564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c609912061e8cd%3A0x83e28495bc27d14!2sNieuwe%20Spiegelstraat%2062%2C%20Amsterdam!5e0!3m2!1sen!2snl!4v1680000000000!5m2!1sen!2snl" 
-          loading="lazy">
-        </iframe>
+      <div class="contact-detail-row">
+        <label>Hours</label>
+        <p>Monday – Sunday: 09:00 – 17:30</p>
       </div>
+      <div class="contact-detail-row">
+        <label>Direct Enquiry</label>
+        <p>info@stefsbakery.nl</p>
+      </div>
+    </div>
+    <div class="contact-map-wrap">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2436.578!2d4.8943!3d52.3564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c609912061e8cd%3A0x83e28495bc27d14!2sNieuwe%20Spiegelstraat%2062%2C%20Amsterdam!5e0!3m2!1sen!2snl!4v1680000000000!5m2!1sen!2snl" 
+        loading="lazy">
+      </iframe>
     </div>
   </section>
 
