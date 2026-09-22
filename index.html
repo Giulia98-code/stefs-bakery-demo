@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stef's Bakery Amsterdam // Artisanal Sandwiches & Specialty Coffee</title>
+  <title>Stef's Bakery // Nieuwe Spiegelstraat, Amsterdam</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
 
     :root {
-      --bg-color: #f7f4ef;
-      --card-bg: #ffffff;
-      --primary: #8c3b23;
-      --primary-dark: #632717;
-      --text-main: #2b2623;
-      --text-muted: #756a63;
-      --border: #e6dfd5;
-      --accent-soft: #f2eae1;
+      --bg: #f5f2eb;
+      --surface: #ffffff;
+      --terracotta: #b54523;
+      --terracotta-dark: #8c3216;
+      --dark: #1a1715;
+      --muted: #6b625b;
+      --border: #e2ddd3;
+      --sand: #ede7dc;
     }
 
     * {
@@ -25,413 +25,452 @@
     }
 
     body {
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      font-family: 'Inter', sans-serif;
-      line-height: 1.6;
+      background-color: var(--bg);
+      color: var(--dark);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
     }
 
-    /* HEADER */
+    /* FLOATING DYNAMIC HEADER */
     header {
-      background-color: var(--card-bg);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 18px 24px;
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 1100px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      padding: 12px 28px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      z-index: 1000;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
     }
 
-    .brand-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
+    .logo {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.8rem;
       font-weight: 700;
-      color: var(--primary);
+      color: var(--terracotta);
       text-decoration: none;
       letter-spacing: -0.5px;
     }
 
     nav {
       display: flex;
-      gap: 8px;
+      gap: 6px;
     }
 
     nav button {
       background: transparent;
       border: none;
       font-family: inherit;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
       padding: 8px 16px;
-      border-radius: 30px;
+      border-radius: 20px;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     nav button:hover, nav button.active {
-      background: var(--accent-soft);
-      color: var(--primary);
+      background: var(--terracotta);
+      color: #fff;
     }
 
     /* VIEWS */
-    .view-section {
+    .page-view {
       display: none;
-      animation: fadeIn 0.3s ease-in-out;
+      padding-top: 120px;
+      animation: pageSlide 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
-    .view-section.active {
+    .page-view.active {
       display: block;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
+    @keyframes pageSlide {
+      from { opacity: 0; transform: translateY(12px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* HERO STYLE UNIQUE */
-    .hero-editorial {
+    /* HERO ASYMMETRIC */
+    .hero-container {
       max-width: 1200px;
-      margin: 60px auto;
-      padding: 0 24px;
+      margin: 0 auto;
+      padding: 40px 24px 80px 24px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 50px;
       align-items: center;
     }
 
-    .hero-content h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.5rem;
-      line-height: 1.1;
-      color: var(--text-main);
+    .hero-text h1 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 4.5rem;
+      line-height: 0.95;
       margin-bottom: 24px;
+      font-weight: 400;
     }
 
-    .hero-content h1 span {
-      color: var(--primary);
+    .hero-text h1 span {
       font-style: italic;
+      color: var(--terracotta);
     }
 
-    .hero-content p {
+    .hero-text p {
       font-size: 1.1rem;
-      color: var(--text-muted);
+      color: var(--muted);
       margin-bottom: 32px;
+      line-height: 1.6;
     }
 
-    .action-group {
+    .hero-cta {
       display: flex;
       gap: 16px;
     }
 
-    .btn-primary {
-      background: var(--primary);
+    .btn-fill {
+      background: var(--terracotta);
       color: #fff;
       padding: 14px 28px;
       border-radius: 30px;
-      border: none;
       font-weight: 600;
-      font-size: 0.95rem;
+      border: none;
       cursor: pointer;
       text-decoration: none;
       transition: background 0.2s;
     }
 
-    .btn-primary:hover {
-      background: var(--primary-dark);
-    }
+    .btn-fill:hover { background: var(--terracotta-dark); }
 
-    .btn-secondary {
+    .btn-outline {
       background: transparent;
-      color: var(--text-main);
+      color: var(--dark);
+      border: 1.5px solid var(--border);
       padding: 14px 28px;
       border-radius: 30px;
-      border: 1.5px solid var(--border);
       font-weight: 600;
-      font-size: 0.95rem;
       cursor: pointer;
       text-decoration: none;
       transition: border-color 0.2s;
     }
 
-    .btn-secondary:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-    }
+    .btn-outline:hover { border-color: var(--terracotta); color: var(--terracotta); }
 
-    .hero-image-grid {
+    /* MOSAIC IMAGE COMPOSITION */
+    .hero-mosaic {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 16px;
-      height: 440px;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: repeat(12, 1fr);
+      height: 420px;
+      position: relative;
     }
 
-    .hero-image-grid img {
+    .mosaic-img-1 {
+      grid-column: 1 / 9;
+      grid-row: 1 / 10;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+    }
+
+    .mosaic-img-2 {
+      grid-column: 6 / 13;
+      grid-row: 5 / 13;
+      border-radius: 24px;
+      overflow: hidden;
+      z-index: 2;
+      border: 6px solid var(--bg);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
+
+    .hero-mosaic img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 12px;
     }
 
-    .hero-image-grid img:nth-child(2) {
-      margin-top: 40px;
-    }
-
-    /* SECTIONS */
-    .container {
+    /* FEATURED PRODUCTS SECTION */
+    .section-wrap {
       max-width: 1200px;
-      margin: 80px auto;
+      margin: 0 auto 100px auto;
       padding: 0 24px;
     }
 
-    .section-header {
-      text-align: center;
-      max-width: 600px;
-      margin: 0 auto 50px auto;
+    .sec-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 40px;
     }
 
-    .section-header h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      margin-bottom: 12px;
-      color: var(--text-main);
+    .sec-title h2 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 3rem;
+      font-weight: 400;
     }
 
-    .section-header p {
-      color: var(--text-muted);
-      font-size: 1.05rem;
+    .sec-title p {
+      color: var(--muted);
+      font-size: 0.95rem;
     }
 
-    /* PRODUCT CARDS HORIZONTAL/EDITORIAL */
-    .products-grid {
+    .cards-horizontal-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
+      gap: 24px;
     }
 
-    .card {
-      background: var(--card-bg);
-      border-radius: 16px;
+    .product-card {
+      background: var(--surface);
+      border-radius: 20px;
       overflow: hidden;
       border: 1px solid var(--border);
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+    .product-card:hover {
+      transform: translateY(-6px);
     }
 
-    .card-img {
-      height: 260px;
+    .product-img-box {
+      height: 240px;
+      overflow: hidden;
+    }
+
+    .product-img-box img {
       width: 100%;
+      height: 100%;
       object-fit: cover;
+      transition: transform 0.5s ease;
     }
 
-    .card-body {
+    .product-card:hover .product-img-box img {
+      transform: scale(1.05);
+    }
+
+    .product-info {
       padding: 24px;
     }
 
-    .card-meta {
+    .product-row {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
+      align-items: center;
       margin-bottom: 8px;
     }
 
-    .card-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.25rem;
+    .product-name {
+      font-size: 1.15rem;
       font-weight: 700;
-      color: var(--text-main);
     }
 
-    .card-price {
-      font-weight: 600;
-      color: var(--primary);
-      font-size: 1.1rem;
+    .product-price {
+      font-weight: 700;
+      color: var(--terracotta);
     }
 
-    .card-desc {
-      color: var(--text-muted);
+    .product-desc {
+      color: var(--muted);
       font-size: 0.9rem;
     }
 
-    /* INFO PAGES LAYOUT */
-    .info-layout {
-      max-width: 900px;
-      margin: 60px auto;
+    /* UNIQUE CONTACT / FIND US PAGE DESIGN */
+    .contact-layout-new {
+      max-width: 1200px;
+      margin: 0 auto 100px auto;
       padding: 0 24px;
-    }
-
-    .info-box {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 50px;
-    }
-
-    .info-box h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      margin-bottom: 24px;
-      color: var(--text-main);
-    }
-
-    .info-box p {
-      color: var(--text-muted);
-      font-size: 1.05rem;
-      margin-bottom: 20px;
-    }
-
-    /* CONTACT & MAP GRID */
-    .contact-grid {
       display: grid;
-      grid-template-columns: 1fr 1.2fr;
+      grid-template-columns: 1fr 1fr;
       gap: 40px;
-      align-items: start;
     }
 
-    .contact-info-card {
-      background: var(--card-bg);
-      padding: 40px;
-      border-radius: 20px;
+    .contact-card-box {
+      background: var(--surface);
       border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
-    .contact-info-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
+    .contact-card-box h2 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 3.2rem;
+      font-weight: 400;
       margin-bottom: 24px;
-      color: var(--text-main);
+      line-height: 1;
     }
 
-    .info-item {
+    .info-group {
       margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
     }
 
-    .info-item label {
+    .info-group:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .info-group span {
       display: block;
       font-size: 0.75rem;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--text-muted);
-      margin-bottom: 4px;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .info-group p {
+      font-size: 1.1rem;
       font-weight: 600;
     }
 
-    .info-item span {
-      font-size: 1.05rem;
-      font-weight: 500;
-      color: var(--text-main);
-    }
-
-    .map-wrapper {
-      border-radius: 20px;
+    .map-box-new {
+      border-radius: 28px;
       overflow: hidden;
       border: 1px solid var(--border);
-      height: 480px;
+      min-height: 500px;
     }
 
-    .map-wrapper iframe {
+    .map-box-new iframe {
       width: 100%;
       height: 100%;
       border: none;
     }
 
+    /* GENERIC INFO PAGES */
+    .page-center-box {
+      max-width: 800px;
+      margin: 0 auto 100px auto;
+      padding: 0 24px;
+    }
+
+    .editorial-content {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 60px;
+    }
+
+    .editorial-content h2 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 3.5rem;
+      font-weight: 400;
+      margin-bottom: 24px;
+      line-height: 1;
+    }
+
+    .editorial-content p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
     footer {
-      background: var(--card-bg);
+      background: var(--sand);
       border-top: 1px solid var(--border);
-      padding: 30px 24px;
+      padding: 40px 24px;
       text-align: center;
-      color: var(--text-muted);
+      color: var(--muted);
       font-size: 0.85rem;
-      margin-top: 100px;
     }
 
     @media (max-width: 900px) {
-      .hero-editorial, .products-grid, .contact-grid {
+      .hero-container, .cards-horizontal-grid, .contact-layout-new {
         grid-template-columns: 1fr;
       }
-      .hero-editorial { gap: 30px; }
-      .hero-content h1 { font-size: 2.8rem; }
+      .hero-text h1 { font-size: 3.5rem; }
+      header { width: 95%; padding: 10px 18px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- FLOATING HEADER -->
   <header>
-    <div class="nav-container">
-      <a href="#" class="brand-logo" onclick="switchView('home')">Stef's Bakery</a>
-      <nav>
-        <button id="nav-home" class="active" onclick="switchView('home')">Home</button>
-        <button id="nav-menu" onclick="switchView('menu')">Menu</button>
-        <button id="nav-catering" onclick="switchView('catering')">Catering</button>
-        <button id="nav-about" onclick="switchView('about')">About</button>
-        <button id="nav-contact" onclick="switchView('contact')">Find Us</button>
-      </nav>
-    </div>
+    <a href="#" class="logo" onclick="changePage('home')">Stef's Bakery</a>
+    <nav>
+      <button id="nav-home" class="active" onclick="changePage('home')">Home</button>
+      <button id="nav-menu" onclick="changePage('menu')">Menu</button>
+      <button id="nav-catering" onclick="changePage('catering')">Catering</button>
+      <button id="nav-about" onclick="changePage('about')">Story</button>
+      <button id="nav-contact" onclick="changePage('contact')">Find Us</button>
+    </nav>
   </header>
 
   <!-- HOME VIEW -->
-  <div id="view-home" class="view-section active">
-    <section class="hero-editorial">
-      <div class="hero-content">
-        <h1>Artisanal flavor, <span>Amsterdam</span> soul.</h1>
-        <p>Nestled in Nieuwe Spiegelstraat. We craft exceptional gourmet sandwiches, fresh daily pastries, and our signature Bouks Blend specialty coffee.</p>
-        <div class="action-group">
-          <button class="btn-primary" onclick="switchView('menu')">Explore Menu</button>
-          <button class="btn-secondary" onclick="switchView('contact')">Visit Shop</button>
+  <div id="view-home" class="page-view active">
+    <section class="hero-container">
+      <div class="hero-text">
+        <h1>Artisanal taste, <span>Amsterdam</span> spirit.</h1>
+        <p>Located right on Nieuwe Spiegelstraat. We serve freshly baked gourmet sandwiches, flaky pastries, and specialty Bouks Blend coffee daily.</p>
+        <div class="hero-cta">
+          <button class="btn-fill" onclick="changePage('menu')">View Menu</button>
+          <button class="btn-outline" onclick="changePage('contact')">Get in Touch</button>
         </div>
       </div>
-      <div class="hero-image-grid">
-        <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80" alt="Gourmet Sandwich">
-        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80" alt="Pastry">
+      <div class="hero-mosaic">
+        <div class="mosaic-img-1">
+          <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80" alt="Sandwich">
+        </div>
+        <div class="mosaic-img-2">
+          <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80" alt="Croissant">
+        </div>
       </div>
     </section>
 
-    <section class="container">
-      <div class="section-header">
-        <h2>Local Favorites</h2>
-        <p>Hand-prepared every morning using the finest ingredients.</p>
+    <section class="section-wrap">
+      <div class="sec-title">
+        <h2>Customer Favorites</h2>
+        <p>Prepared fresh every morning.</p>
       </div>
-      <div class="products-grid">
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80" class="card-img" alt="BBQ Chicken">
-          <div class="card-body">
-            <div class="card-meta">
-              <h3 class="card-title">BBQ Chicken Sandwich</h3>
-              <span class="card-price">€12.50</span>
+      <div class="cards-horizontal-grid">
+        <div class="product-card">
+          <div class="product-img-box">
+            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80" alt="BBQ Chicken">
+          </div>
+          <div class="product-info">
+            <div class="product-row">
+              <span class="product-name">BBQ Chicken Sandwich</span>
+              <span class="product-price">€12.50</span>
             </div>
-            <p class="card-desc">Tender chicken, smoky BBQ glaze, fresh greens, and crispy texture.</p>
+            <p class="product-desc">Smoky BBQ sauce, juicy chicken, fresh greens.</p>
           </div>
         </div>
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1539252554453-80ab65ce3586?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Capri">
-          <div class="card-body">
-            <div class="card-meta">
-              <h3 class="card-title">Capri Sandwich</h3>
-              <span class="card-price">€13.00</span>
+        <div class="product-card">
+          <div class="product-img-box">
+            <img src="https://images.unsplash.com/photo-1539252554453-80ab65ce3586?auto=format&fit=crop&w=600&q=80" alt="Capri">
+          </div>
+          <div class="product-info">
+            <div class="product-row">
+              <span class="product-name">Capri Sandwich</span>
+              <span class="product-price">€13.00</span>
             </div>
-            <p class="card-desc">Fresh mozzarella, ripe vine tomatoes, and homemade basil pesto.</p>
+            <p class="product-desc">Mozzarella, vine tomatoes, homemade pesto.</p>
           </div>
         </div>
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Double Raspberry Croissant">
-          <div class="card-body">
-            <div class="card-meta">
-              <h3 class="card-title">Double Raspberry Croissant</h3>
-              <span class="card-price">€3.50</span>
+        <div class="product-card">
+          <div class="product-img-box">
+            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80" alt="Pastry">
+          </div>
+          <div class="product-info">
+            <div class="product-row">
+              <span class="product-name">Double Raspberry Croissant</span>
+              <span class="product-price">€3.50</span>
             </div>
-            <p class="card-desc">Flaky laminated butter pastry filled with rich raspberry jam.</p>
+            <p class="product-desc">Flaky butter pastry with rich raspberry filling.</p>
           </div>
         </div>
       </div>
@@ -439,99 +478,93 @@
   </div>
 
   <!-- MENU VIEW -->
-  <div id="view-menu" class="view-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Our Full Menu</h2>
-        <p>Sandwiches, savory quiches, and specialty drinks.</p>
+  <div id="view-menu" class="page-view">
+    <section class="section-wrap">
+      <div class="sec-title">
+        <h2>Our Daily Menu</h2>
+        <p>Sandwiches, quiches, and specialty coffees.</p>
       </div>
-      <div class="products-grid">
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80" class="card-img" alt="BBQ Chicken">
-          <div class="card-body">
-            <div class="card-meta">
-              <h3 class="card-title">BBQ Chicken Sandwich</h3>
-              <span class="card-price">€12.50</span>
-            </div>
-            <p class="card-desc">Smoky chicken with fresh crisp greens.</p>
+      <div class="cards-horizontal-grid">
+        <div class="product-card">
+          <div class="product-img-box">
+            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80" alt="BBQ">
+          </div>
+          <div class="product-info">
+            <div class="product-row"><span class="product-name">BBQ Chicken Sandwich</span><span class="product-price">€12.50</span></div>
+            <p class="product-desc">Smoky chicken with crisp fresh greens.</p>
           </div>
         </div>
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1539252554453-80ab65ce3586?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Capri">
-          <div class="card-body">
-            <div class="card-meta">
-              <h3 class="card-title">Capri Sandwich</h3>
-              <span class="card-price">€13.00</span>
-            </div>
-            <p class="card-desc">Mozzarella, tomato & fresh pesto.</p>
+        <div class="product-card">
+          <div class="product-img-box">
+            <img src="https://images.unsplash.com/photo-1539252554453-80ab65ce3586?auto=format&fit=crop&w=600&q=80" alt="Capri">
+          </div>
+          <div class="product-info">
+            <div class="product-row"><span class="product-name">Capri Sandwich</span><span class="product-price">€13.00</span></div>
+            <p class="product-desc">Mozzarella, tomato & fresh basil.</p>
           </div>
         </div>
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Quiche">
-          <div class="card-body">
-            <div class="card-meta">
-              <h3 class="card-title">Artisanal Quiche</h3>
-              <span class="card-price">€11.50</span>
-            </div>
-            <p class="card-desc">Baked fresh daily with rich fillings.</p>
+        <div class="product-card">
+          <div class="product-img-box">
+            <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=600&q=80" alt="Quiche">
+          </div>
+          <div class="product-info">
+            <div class="product-row"><span class="product-name">Artisanal Quiche</span><span class="product-price">€11.50</span></div>
+            <p class="product-desc">Baked fresh daily with rich fillings.</p>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 
   <!-- CATERING VIEW -->
-  <div id="view-catering" class="view-section">
-    <div class="info-layout">
-      <div class="info-box">
-        <h2>Corporate & Event Catering</h2>
-        <p>Looking to elevate your office meeting or team lunch in Amsterdam? We provide premium catering solutions tailored to your needs.</p>
-        <p>From assorted gourmet sandwich platters to fresh pastry boxes and cold-pressed juices, we bring honest, delicious food straight to your workplace.</p>
-        <button class="btn-primary" style="margin-top: 10px;" onclick="switchView('contact')">Get in Touch</button>
+  <div id="view-catering" class="page-view">
+    <div class="page-center-box">
+      <div class="editorial-content">
+        <h2>Corporate Catering</h2>
+        <p>Elevate your office meetings and team lunches in Amsterdam with our premium catering selections.</p>
+        <p>We provide fresh gourmet sandwich platters, pastry boxes, and juices straight to your workspace.</p>
+        <button class="btn-fill" style="margin-top: 10px;" onclick="changePage('contact')">Request Catering</button>
       </div>
     </div>
   </div>
 
   <!-- ABOUT VIEW -->
-  <div id="view-about" class="view-section">
-    <div class="info-layout">
-      <div class="info-box">
+  <div id="view-about" class="page-view">
+    <div class="page-center-box">
+      <div class="editorial-content">
         <h2>Our Story</h2>
-        <p>Stef's Bakery was born out of a profound love for honest ingredients, great company, and exceptional coffee.</p>
-        <p>Located right in the heart of Amsterdam at Nieuwe Spiegelstraat, we take pride in being a welcoming corner where locals and visitors can pause, connect, and enjoy food made with true dedication.</p>
+        <p>Stef's Bakery was founded on a genuine passion for honest food, great company, and exceptional coffee.</p>
+        <p>Situated right in the lively heart of Amsterdam at Nieuwe Spiegelstraat, we love providing a warm corner for locals and travelers alike.</p>
       </div>
     </div>
   </div>
 
-  <!-- CONTACT VIEW -->
-  <div id="view-contact" class="view-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Visit Our Bakery</h2>
-        <p>We're ready to welcome you in Amsterdam.</p>
+  <!-- CONTACT / FIND US VIEW (NEW LAYOUT) -->
+  <div id="view-contact" class="page-view">
+    <div class="contact-layout-new">
+      <div class="contact-card-box">
+        <div>
+          <h2>Come Visit Us</h2>
+          <div class="info-group">
+            <span>Location</span>
+            <p>Nieuwe Spiegelstraat 62B<br>1017 DH Amsterdam</p>
+          </div>
+          <div class="info-group">
+            <span>Hours</span>
+            <p>Monday – Sunday: 09:00 – 17:30</p>
+          </div>
+          <div class="info-group">
+            <span>Direct Contact</span>
+            <p>info@stefsbakery.nl</p>
+          </div>
+        </div>
+        <button class="btn-fill" style="width: 100%; margin-top: 20px;" onclick="alert('Thank you! Message sent.')">Send an Enquiry</button>
       </div>
-      <div class="contact-grid">
-        <div class="contact-info-card">
-          <h3>Location & Hours</h3>
-          <div class="info-item">
-            <label>Address</label>
-            <span>Nieuwe Spiegelstraat 62B<br>1017 DH Amsterdam</span>
-          </div>
-          <div class="info-item">
-            <label>Opening Hours</label>
-            <span>Monday – Sunday<br>09:00 – 17:30</span>
-          </div>
-          <div class="info-item">
-            <label>Email</label>
-            <span>info@stefsbakery.nl</span>
-          </div>
-        </div>
-        <div class="map-wrapper">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2436.578!2d4.8943!3d52.3564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c609912061e8cd%3A0x83e28495bc27d14!2sNieuwe%20Spiegelstraat%2062%2C%20Amsterdam!5e0!3m2!1sen!2snl!4v1680000000000!5m2!1sen!2snl" 
-            loading="lazy">
-          </iframe>
-        </div>
+      <div class="map-box-new">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2436.578!2d4.8943!3d52.3564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c609912061e8cd%3A0x83e28495bc27d14!2sNieuwe%20Spiegelstraat%2062%2C%20Amsterdam!5e0!3m2!1sen!2snl!4v1680000000000!5m2!1sen!2snl" 
+          loading="lazy">
+        </iframe>
       </div>
     </div>
   </div>
@@ -541,12 +574,12 @@
   </footer>
 
   <script>
-    function switchView(viewId) {
-      document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+    function changePage(pageId) {
+      document.querySelectorAll('.page-view').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('nav button').forEach(el => el.classList.remove('active'));
 
-      document.getElementById('view-' + viewId).classList.add('active');
-      const btn = document.getElementById('nav-' + viewId);
+      document.getElementById('view-' + pageId).classList.add('active');
+      const btn = document.getElementById('nav-' + pageId);
       if (btn) btn.classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
